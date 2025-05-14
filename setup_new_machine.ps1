@@ -32,30 +32,40 @@ scoop bucket add nerd-fonts
 Write-Host "Updating Scoop..." -ForegroundColor Yellow
 scoop update
 
-# Install regular packages
-scoop install extras/curl
-scoop install main/devd
-scoop install main/fd
-scoop install main/fzf
+# Core dev tools
 scoop install main/gcc
-scoop install extras/hwmonitor
-scoop install nerd-fonts/JetBrainsMono-NF
-scoop install extras/lazygit
-scoop install versions/lightshot
-scoop install main/modd
-scoop install main/neovim
-scoop install versions/nodejs20
-scoop install main/oh-my-posh
-scoop install main/pnpm
-scoop install extras/psreadline
-scoop install main/pwsh
 scoop install versions/python311
-scoop install main/ripgrep
-scoop install main/sudo
-scoop install extras/terminal-icons
-scoop install extras/trafficmonitor
-scoop install main/which
+scoop install versions/nodejs20
+scoop install main/pnpm
+scoop install versions/postgresql16
+
+# Terminal improvements
+scoop install main/pwsh
+scoop install main/oh-my-posh
 scoop install extras/windows-terminal
+scoop install main/fzf
+
+# Dev utilities
+scoop install main/neovim
+scoop install extras/lazygit
+scoop install main/ripgrep
+scoop install main/fd
+scoop install main/modd
+
+# System tools
+scoop install extras/curl
+scoop install main/sudo
+scoop install main/which
+
+# Monitoring
+scoop install extras/hwmonitor
+scoop install extras/trafficmonitor
+
+# Fonts
+scoop install nerd-fonts/JetBrainsMono-NF
+
+# Misc apps
+scoop install versions/lightshot
 scoop install extras/winrar
 
 # Import registry files
