@@ -85,16 +85,3 @@ Import-Module Terminal-Icons
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser -Force
 Set-Content -Path $PROFILE.CurrentUserCurrentHost -Value ". `$env:USERPROFILE\.config\powershell\user_profile.ps1" -Force
 
-# Setup LazyVim
-# required
-Move-Item $env:LOCALAPPDATA\nvim $env:LOCALAPPDATA\nvim.bak
-
-# optional but recommended
-Move-Item $env:LOCALAPPDATA\nvim-data $env:LOCALAPPDATA\nvim-data.bak
-
-git clone https://github.com/LazyVim/starter $env:LOCALAPPDATA\nvim
-
-Remove-Item $env:LOCALAPPDATA\nvim\.git -Recurse -Force
-
-Write-Host "All done! Launching Neovim..." -ForegroundColor Green
-nvim
