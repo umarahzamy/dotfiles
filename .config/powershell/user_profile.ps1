@@ -24,5 +24,5 @@ Import-Module Terminal-Icons -ErrorAction SilentlyContinue
 Import-Module posh-git -ErrorAction SilentlyContinue
 
 # Oh-My-Posh (prompt theme)
-oh-my-posh init pwsh --config $HOME\.config\powershell\nordcustom_v.2.omp.json | Invoke-Expression
+oh-my-posh init pwsh --config $HOME\.config\powershell\plain_customized.omp.json | Invoke-Expression
 
