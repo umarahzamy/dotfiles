@@ -1,6 +1,9 @@
 # PostgreSQL Password File Setup
 $env:PGPASSFILE = "$HOME\.pgpass"
 
+function dotfiles { 
+  git --git-dir=$HOME\dotfiles --work-tree=$HOME @args
+}
 # Lightweight profile - only loads modules/themes
 function wtwl {
     wt -w 0 split-pane -H -s 0.3 -p "PowerShell" -d "$PWD" `; split-pane -V -p "PowerShell" -d "$PWD" `; focus-pane -t 0
