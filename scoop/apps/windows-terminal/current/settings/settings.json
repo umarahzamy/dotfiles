@@ -1,0 +1,213 @@
+{
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "actions": 
+    [
+        {
+            "command": 
+            {
+                "action": "newTab",
+                "profile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}"
+            },
+            "id": "User.newTab.79F17A5D"
+        },
+        {
+            "command": 
+            {
+                "action": "closeTab"
+            },
+            "id": "User.closeTab.0"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "profile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "size": 0.5,
+                "split": "right",
+                "splitMode": "duplicate"
+            },
+            "id": "User.splitPane.35EA1AAA"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "profile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "size": 0.5,
+                "split": "down",
+                "splitMode": "duplicate"
+            },
+            "id": "User.splitPane.4A8F3AE2"
+        }
+    ],
+    "autoHideWindow": false,
+    "centerOnLaunch": true,
+    "copyFormatting": "none",
+    "copyOnSelect": false,
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "firstWindowPreference": "defaultProfile",
+    "initialPosition": ",",
+    "keybindings": 
+    [
+        {
+            "id": "Terminal.MoveTabForward",
+            "keys": "ctrl+alt+f"
+        },
+        {
+            "id": "User.newTab.79F17A5D",
+            "keys": "ctrl+t"
+        },
+        {
+            "id": "Terminal.PrevTab",
+            "keys": "alt+h"
+        },
+        {
+            "id": "Terminal.ResizePaneLeft",
+            "keys": "ctrl+alt+left"
+        },
+        {
+            "id": "User.closeTab.0",
+            "keys": "ctrl+w"
+        },
+        {
+            "id": "Terminal.NextTab",
+            "keys": "alt+l"
+        },
+        {
+            "id": "Terminal.MoveTabBackward",
+            "keys": "ctrl+alt+b"
+        },
+        {
+            "id": "Terminal.DuplicateTab",
+            "keys": "ctrl+alt+d"
+        },
+        {
+            "id": "Terminal.ClosePane",
+            "keys": "ctrl+alt+x"
+        },
+        {
+            "id": "User.splitPane.35EA1AAA",
+            "keys": "ctrl+shift+v"
+        },
+        {
+            "id": "User.splitPane.4A8F3AE2",
+            "keys": "ctrl+shift+h"
+        },
+        {
+            "id": "Terminal.MoveFocusLeft",
+            "keys": "ctrl+alt+h"
+        },
+        {
+            "id": "Terminal.MoveFocusUp",
+            "keys": "ctrl+alt+k"
+        },
+        {
+            "id": "Terminal.MoveFocusRight",
+            "keys": "ctrl+alt+l"
+        },
+        {
+            "id": "Terminal.MoveFocusDown",
+            "keys": "ctrl+alt+j"
+        },
+        {
+            "id": "Terminal.ResizePaneRight",
+            "keys": "ctrl+alt+right"
+        },
+        {
+            "id": "Terminal.ResizePaneUp",
+            "keys": "ctrl+alt+up"
+        },
+        {
+            "id": "Terminal.ResizePaneDown",
+            "keys": "ctrl+alt+down"
+        },
+        {
+            "id": "Terminal.CopyToClipboard",
+            "keys": "ctrl+c"
+        },
+        {
+            "id": "Terminal.PasteFromClipboard",
+            "keys": "ctrl+v"
+        }
+    ],
+    "launchMode": "maximized",
+    "newTabMenu": 
+    [
+        {
+            "type": "remainingProfiles"
+        }
+    ],
+    "newTabPosition": "afterCurrentTab",
+    "profiles": 
+    {
+        "defaults": 
+        {
+            "colorScheme": "One Half Dark",
+            "font": 
+            {
+                "face": "JetBrainsMono Nerd Font",
+                "size": 12
+            },
+            "opacity": 100,
+            "padding": "0,0,0,0",
+            "scrollbarState": "hidden",
+            "useAcrylic": true
+        },
+        "list": 
+        [
+            {
+                "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell"
+            },
+            {
+                "commandline": "%SystemRoot%\\System32\\cmd.exe",
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "Command Prompt"
+            },
+            {
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+                "hidden": false,
+                "name": "PowerShell",
+                "source": "Windows.Terminal.PowershellCore"
+            },
+            {
+                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+                "hidden": false,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
+            },
+            {
+                "guid": "{a649636b-d76e-5c8a-b79a-98fcc62c9fc4}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 2019",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{7d553580-6061-5f5c-a427-79c9767708e9}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 2019",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{fa5e456e-69a0-5714-b10e-5ada5df23c04}",
+                "hidden": false,
+                "name": "Ubuntu-24.04",
+                "source": "Microsoft.WSL"
+            },
+            {
+                "guid": "{4ff56d04-d9cf-57ea-bae2-ad396374e7e3}",
+                "hidden": false,
+                "name": "Ubuntu 22.04.5 LTS",
+                "source": "CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc"
+            }
+        ]
+    },
+    "schemes": [],
+    "tabWidthMode": "equal",
+    "themes": [],
+    "useAcrylicInTabRow": true
+}
