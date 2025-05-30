@@ -28,7 +28,7 @@
         {
           "properties": {
             "cache_duration": "none",
-            "style": "folder"
+            "style": "full"
           },
           "template": " \uf07b </>{{ .Path }} ",
           "powerline_symbol": "\ue0b0",
