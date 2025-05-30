@@ -51,28 +51,20 @@
     "keybindings": 
     [
         {
-            "id": "User.newTab.79F17A5D",
-            "keys": "ctrl+t"
-        },
-        {
             "id": "Terminal.MoveTabForward",
             "keys": "ctrl+alt+f"
         },
         {
-            "id": "User.closeTab.0",
-            "keys": "ctrl+w"
+            "id": "User.newTab.79F17A5D",
+            "keys": "ctrl+t"
         },
         {
             "id": "Terminal.ResizePaneLeft",
             "keys": "ctrl+alt+left"
         },
         {
-            "id": "Terminal.PrevTab",
-            "keys": "alt+h"
-        },
-        {
-            "id": "Terminal.NextTab",
-            "keys": "alt+l"
+            "id": "User.closeTab.0",
+            "keys": "ctrl+w"
         },
         {
             "id": "Terminal.MoveTabBackward",
@@ -145,6 +137,7 @@
         {
             "adjustIndistinguishableColors": "always",
             "colorScheme": "Catppuccin Mocha",
+            "cursorShape": "filledBox",
             "experimental.retroTerminalEffect": false,
             "font": 
             {
