@@ -51,20 +51,24 @@
     "keybindings": 
     [
         {
-            "id": "Terminal.MoveTabForward",
-            "keys": "ctrl+alt+f"
+            "id": "User.splitPane.35EA1AAA",
+            "keys": "ctrl+shift+v"
         },
         {
             "id": "User.newTab.79F17A5D",
             "keys": "ctrl+t"
         },
         {
-            "id": "Terminal.ResizePaneLeft",
-            "keys": "ctrl+alt+left"
+            "id": "Terminal.MoveTabForward",
+            "keys": "ctrl+alt+f"
         },
         {
             "id": "User.closeTab.0",
             "keys": "ctrl+w"
+        },
+        {
+            "id": "Terminal.ResizePaneLeft",
+            "keys": "ctrl+alt+left"
         },
         {
             "id": "Terminal.MoveTabBackward",
@@ -77,10 +81,6 @@
         {
             "id": "Terminal.ClosePane",
             "keys": "ctrl+alt+x"
-        },
-        {
-            "id": "User.splitPane.35EA1AAA",
-            "keys": "ctrl+shift+v"
         },
         {
             "id": "User.splitPane.4A8F3AE2",
@@ -142,9 +142,9 @@
             "font": 
             {
                 "face": "JetBrainsMono Nerd Font",
-                "size": 12
+                "size": 10
             },
-            "opacity": 60,
+            "opacity": 50,
             "padding": "0,0,0,0",
             "scrollbarState": "hidden",
             "useAcrylic": true
@@ -201,6 +201,7 @@
             }
         ]
     },
+    "rendering.graphicsAPI": "direct3d11",
     "schemes": 
     [
         {
@@ -228,6 +229,7 @@
         }
     ],
     "tabWidthMode": "equal",
+    "theme": "Catppuccin Mocha",
     "themes": 
     [
         {
