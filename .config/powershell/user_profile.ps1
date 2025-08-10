@@ -7,6 +7,11 @@ $global:ProfileTimings = [System.Collections.Generic.List[object]]::new()
 # PostgreSQL Password File Setup
 $env:PGPASSFILE = "$HOME\.pgpass"
 
+# Claude Git bash path
+$env:CLAUDE_CODE_GIT_BASH_PATH="$HOME\scoop\apps\git\current\bin\bash.exe"
+
+# Zoxide shell initialization
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
 # Function definitions
 function dotfiles { 
     git --git-dir=$HOME\dotfiles --work-tree=$HOME @args
