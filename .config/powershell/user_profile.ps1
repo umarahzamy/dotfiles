@@ -67,6 +67,9 @@ if (Get-Module PSReadLine) {
     Set-PSReadLineOption -PredictionSource History
     Set-PSReadLineOption -PredictionViewStyle ListView
     Set-PSReadLineOption -EditMode Windows
+
+    Set-PSReadLineKeyHandler -Key Alt+k -Function HistorySearchBackward
+    Set-PSReadLineKeyHandler -Key Alt+j -Function HistorySearchForward
 }
 $sectionTime.Stop()
 $global:ProfileTimings.Add([PSCustomObject]@{ Section = "PSReadLine"; TimeMS = $sectionTime.ElapsedMilliseconds })
