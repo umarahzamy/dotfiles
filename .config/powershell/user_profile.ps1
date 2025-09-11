@@ -5,8 +5,12 @@ $global:ProfileTimings = [System.Collections.Generic.List[object]]::new()
 # -----------------------------
 # Environment setup
 # -----------------------------
-$env:PGPASSFILE = "$HOME\.pgpass"  # PostgreSQL password file
-$env:CLAUDE_CODE_GIT_BASH_PATH="$HOME\scoop\apps\git\current\bin\bash.exe"
+$dotEnvDir = $PSScriptRoot
+$envFile = Join-Path $dotEnvDir ".env"
+  Get-Content $envFile | ForEach-Object {
+      if ($_ -match '^\s*$' -or $_ -match '^\s*#') { return }
+      Invoke-Expression ('$env:' + $_.Trim())
+  }
 
 # Initialize zoxide
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
