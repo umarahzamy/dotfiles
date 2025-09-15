@@ -1,38 +1,26 @@
+-- Window option presets
+local WinOpts = {
+  right = function()
+    return { position = "right", width = 0.5 }
+  end,
+}
+
+-- Terminal right (Root Dir)
 vim.keymap.set("n", "<leader>fT", function()
-  Snacks.terminal(nil, {
-    cwd = LazyVim.root(),
-    win = {
-      position = "right",
-      width = 0.5,
-    },
-  })
+  Snacks.terminal(nil, { cwd = LazyVim.root(), win = WinOpts.right() })
 end, { desc = "Terminal right (Root Dir)" })
 
+-- Terminal right (cwd)
 vim.keymap.set("n", "<leader>ft", function()
-  Snacks.terminal(nil, {
-    win = {
-      position = "right",
-      width = 0.5,
-    },
-  })
+  Snacks.terminal(nil, { win = WinOpts.right() })
 end, { desc = "Terminal right (cwd)" })
 
 vim.keymap.set("n", "<C-/>", function()
-  Snacks.terminal(nil, {
-    win = {
-      position = "right",
-      width = 0.5,
-    },
-  })
+  Snacks.terminal(nil, { win = WinOpts.right() })
 end, { desc = "Terminal right (cwd)" })
 
 vim.keymap.set("n", "<C-_>", function()
-  Snacks.terminal(nil, {
-    win = {
-      position = "right",
-      width = 0.5,
-    },
-  })
+  Snacks.terminal(nil, { win = WinOpts.right() })
 end, { desc = "which_key_ignored_right" })
 
 vim.keymap.set("n", "<leader>gg", function()
