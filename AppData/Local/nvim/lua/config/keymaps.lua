@@ -1,7 +1,33 @@
+-- Check if directory exists
+local function has_dir(path)
+  return vim.fn.isdirectory(path) == 1
+end
+
+-- Check if executable is available
+local function has_executable(cmd)
+  return vim.fn.executable(cmd) == 1
+end
+
+pcall(function()
+  require("config.snacks-claude")
+  require("config.snacks-gitui")
+  require("config.snacks-psql")
+end)
+
 -- Window option presets
 local WinOpts = {
   right = function()
     return { position = "right", width = 0.5 }
+  end,
+  float = function(title)
+    return {
+      position = "float",
+      width = 0.9,
+      height = 0.9,
+      border = "rounded",
+      title = " " .. title .. " ",
+      title_pos = "center",
+    }
   end,
 }
 
@@ -23,105 +49,38 @@ vim.keymap.set("n", "<C-_>", function()
   Snacks.terminal(nil, { win = WinOpts.right() })
 end, { desc = "which_key_ignored_right" })
 
-vim.keymap.set("n", "<leader>gg", function()
-  -- check if .git directory exists in project root
-  local function has_git_dir()
-    local git_path = LazyVim.root() .. "/.git"
-    return vim.fn.isdirectory(git_path) == 1
-  end
-
-  if not has_git_dir() then
-    vim.notify("not a git repository", vim.log.levels.ERROR)
-    return
-  end
-
-  Snacks.terminal("clear && gitui", {
-    cwd = LazyVim.root(),
-    win = {
-      style = "float",
-      position = "float",
-      width = 0.9,
-      height = 0.9,
-      border = "rounded",
-      title = " GitUI ",
-      title_pos = "center",
-    },
-  })
-end, { desc = "GitUI (Root Dir)" })
-
-vim.keymap.set("n", "<leader>D", function()
-  -- parse .env file
-  local function parse_env_file()
-    local env_path = LazyVim.root() .. "/.env"
-    local env_vars = {}
-
-    local file = io.open(env_path, "r")
-    if not file then
-      return nil
+-- Backlog.md
+if has_executable("backlog") then
+  vim.keymap.set("n", "<leader>B", function()
+    local backlog_path = LazyVim.root() .. "/backlog"
+    if not has_dir(backlog_path) then
+      vim.notify("backlog.md not initialized in project root", vim.log.levels.ERROR)
+      return
     end
+    Snacks.terminal(nil, { cwd = LazyVim.root(), win = WinOpts.float("Backlog.md") })
+  end, { desc = "Backlog.md" })
+end
 
-    for line in file:lines() do
-      -- Skip comments and empty lines
-      if line:match("^%s*#") or line:match("^%s*$") then
-        goto continue
-      end
+-- Claude code
+if has_executable("claude") then
+  vim.keymap.set("n", "<leader>C", function()
+    Snacks.claude({
+      cwd = LazyVim.root(),
+      win = WinOpts.float("Claude Code"),
+    })
+  end, { desc = "Claude Code" })
+end
 
-      -- Parse KEY=VALUE format
-      local key, value = line:match("^%s*([A-Z_]+)%s*=%s*[\"']?(.-)[\"']?%s*$")
-      if key and value then
-        env_vars[key] = value
-      end
+-- GitUI
+if has_executable("gitui") then
+  vim.keymap.set("n", "<leader>gg", function()
+    Snacks.gitui({ cwd = LazyVim.root(), win = WinOpts.float("GitUI") })
+  end, { desc = "GitUI (Root Dir)" })
+end
 
-      ::continue::
-    end
-
-    file:close()
-    return env_vars
-  end
-
-  -- build psql command from .env
-  local env_vars = parse_env_file()
-  local psql_cmd = nil
-
-  if not env_vars then
-    vim.notify("no .env file found", vim.log.levels.ERROR)
-    return
-  end
-
-  -- check required postgresql variables
-  local required_vars = { "PGHOST", "PGPORT", "PGDATABASE", "PGUSERNAME" }
-  local missing_vars = {}
-
-  for _, var in ipairs(required_vars) do
-    if not env_vars[var] or env_vars[var] == "" then
-      table.insert(missing_vars, var)
-    end
-  end
-
-  if #missing_vars > 0 then
-    vim.notify("incomplete .env configuration", vim.log.levels.ERROR)
-    return
-  end
-
-  -- build psql command
-  local args = {}
-  table.insert(args, "-h " .. env_vars.PGHOST)
-  table.insert(args, "-p " .. env_vars.PGPORT)
-  table.insert(args, "-d " .. env_vars.PGDATABASE)
-  table.insert(args, "-U " .. env_vars.PGUSERNAME)
-
-  psql_cmd = "psql " .. table.concat(args, " ")
-
-  Snacks.terminal("clear;" .. psql_cmd, {
-    cwd = LazyVim.root(),
-    win = {
-      style = "float",
-      position = "float",
-      width = 0.9,
-      height = 0.9,
-      border = "rounded",
-      title = " PostgreSQL ",
-      title_pos = "center",
-    },
-  })
-end, { desc = "PostgreSQL (psql)" })
+-- PostgreSQL (psql)
+if has_executable("psql") then
+  vim.keymap.set("n", "<leader>D", function()
+    Snacks.psql({ cwd = LazyVim.root(), win = WinOpts.float("PostgreSQL") })
+  end, { desc = "PostgreSQL (psql)" })
+end
