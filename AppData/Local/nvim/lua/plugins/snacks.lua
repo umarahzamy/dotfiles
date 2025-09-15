@@ -2,8 +2,8 @@ return {
   "folke/snacks.nvim",
   opts = {
     terminal = {
-      start_insert = false,
-      auto_insert = false,
+      start_insert = true,
+      auto_insert = true,
     },
     picker = {
       sources = {
