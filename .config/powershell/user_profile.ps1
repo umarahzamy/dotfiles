@@ -57,9 +57,20 @@ function build-log {
     pnpm build 2>&1 | Tee-Object -FilePath $LogFile -Encoding UTF8NoBOM
 }
 
+# Test with logging
+function test-log{
+    $LogDir = "./logs"
+    $LogFile = "$LogDir/pnpm-test.log"
+
+    New-Item -ItemType Directory -Force -Path $LogDir | Out-Null
+    [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+
+    pnpm test 2>&1 | Tee-Object -FilePath $LogFile -Encoding UTF8NoBOM
+}
 Set-Alias dl dev-log
 Set-Alias cl check-log
 Set-Alias bl build-log
+Set-Alias tl test-log
 
 # Autossh like function
 function autossh {
