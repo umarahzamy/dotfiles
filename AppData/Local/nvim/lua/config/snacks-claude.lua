@@ -28,7 +28,7 @@ Snacks.config.style("claude", {})
 function M.open(opts)
   opts = Snacks.config.get("claude", defaults, opts)
 
-  local cmd = { "claude" }
+  local cmd = { "claude", "--verbose", "--continue" }
 
   return Snacks.terminal(cmd, opts)
 end
