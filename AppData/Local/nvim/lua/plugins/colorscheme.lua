@@ -5,9 +5,11 @@ return {
       colorscheme = "catppuccin",
     },
   },
+
   {
     "folke/tokyonight.nvim",
     lazy = true,
+    name = "tokyonight",
     opts = {
       style = "storm",
       transparent = true,
@@ -17,14 +19,28 @@ return {
       },
     },
   },
+
+  -- catppuccin
   {
     "catppuccin/nvim",
     lazy = true,
     name = "catppuccin",
-    priority = 1000, -- ensure it loads first if you want it as your default colorscheme
+    priority = 1000,
     opts = {
-      flavour = "mocha", -- This sets the theme to latte
+      flavour = "mocha",
       transparent_background = true,
+      float = {
+        transparent = true,
+        solid = false,
+      },
+      lsp_styles = {
+        underlines = {
+          errors = { "undercurl" },
+          hints = { "undercurl" },
+          warnings = { "undercurl" },
+          information = { "undercurl" },
+        },
+      },
       integrations = {
         aerial = true,
         alpha = true,
@@ -40,29 +56,22 @@ return {
         leap = true,
         lsp_trouble = true,
         mason = true,
-        markdown = true,
         mini = true,
-        native_lsp = {
-          enabled = true,
-          underlines = {
-            errors = { "undercurl" },
-            hints = { "undercurl" },
-            warnings = { "undercurl" },
-            information = { "undercurl" },
-          },
-        },
         navic = { enabled = true, custom_bg = "lualine" },
         neotest = true,
         neotree = true,
         noice = true,
         notify = true,
-        semantic_tokens = true,
         snacks = true,
         telescope = true,
-        treesitter = true,
         treesitter_context = true,
         which_key = true,
       },
+      custom_highlights = function()
+        return {
+          Pmenu = { bg = "NONE" },
+        }
+      end,
     },
     specs = {
       {
@@ -70,8 +79,7 @@ return {
         optional = true,
         opts = function(_, opts)
           if (vim.g.colors_name or ""):find("catppuccin") then
-            opts.highlights =
-              require("catppuccin.groups.integrations.bufferline").get()
+            opts.highlights = require("catppuccin.special.bufferline").get_theme()
           end
         end,
       },
