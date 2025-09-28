@@ -103,6 +103,16 @@ config.keys = {
 		key = "l",
 		action = act.ActivatePaneDirection("Right"),
 	},
+	{
+		mods = "CTRL",
+		key = "c",
+		action = act.CopyTo("ClipboardAndPrimarySelection"),
+	},
+	{
+		mods = "CTRL",
+		key = "v",
+		action = act.PasteFrom("Clipboard"),
+	},
 }
 config.line_height = 1.2
 config.max_fps = 60
